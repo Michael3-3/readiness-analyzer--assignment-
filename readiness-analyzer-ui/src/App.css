@@ -1,38 +1,287 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+.app-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- Wizard Progress Bar (P0 Requirement) --- */
+.wizard-progress-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 4px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.step-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 5px;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 3px solid #ccc;
+    transition: all 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.step-item.active {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- General Component Styling --- */
+.card {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.error-message {
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+/* --- Step 2 Specifics --- */
+.data-input {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+.questionnaire-section {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- Table Preview (P0 Requirement) --- */
+.table-preview-container {
+    margin: 30px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table-preview {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 600px;
+}
+
+.table-preview th, .table-preview td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table-preview th {
+    background-color: #f1f1f1;
+    position: sticky;
+    top: 0;
+}
+
+.error-badge {
+    background-color: #dc3545;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* --- Score Dashboard --- */
+.score-dashboard {
+    padding: 25px;
+    border: 2px solid #007bff;
+}
+.score-item {
+    margin-bottom: 15px;
+}
+.score-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.score-bar-container {
+    background-color: #f0f0f0;
+    height: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.score-bar-fill {
+    height: 100%;
+    transition: width 1s ease-in-out;
+}
+.readiness-label {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.high-readiness { background-color: #d4edda; color: #155724; }
+.medium-readiness { background-color: #fff3cd; color: #856404; }
+.low-readiness { background-color: #f8d7da; color: #721c24; }
+
+/* --- Results Layout --- */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.results-header {
+    background-color: #f9f9f9;
+    text-align: center;
+    border-color: #ccc;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+}
+
+/* --- Coverage Panel --- */
+.coverage-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.coverage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.coverage-target {
+    font-weight: 500;
+    flex: 1;
+    min-width: 150px;
+}
+.coverage-status-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.badge-matched { background-color: #d4edda; color: #155724; }
+.badge-close { background-color: #cce5ff; color: #004085; }
+.badge-missing { background-color: #f8d7da; color: #721c24; }
+.coverage-hint {
+    flex-basis: 100%;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* --- Rule Findings Panel --- */
+.rule-list {
+    list-style: none;
+    padding: 0;
+}
+.rule-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+.rule-name {
+    font-weight: 500;
+    flex: 1;
+    min-width: 150px;
+}
+.rule-status {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.badge-pass { background-color: #d4edda; color: #155724; }
+.badge-fail { background-color: #f8d7da; color: #721c24; }
+.rule-detail {
+    flex-basis: 100%;
+    font-style: italic;
+    color: #a00;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+.rule-fix-tip {
+    flex-basis: 100%;
+    color: #007bff;
+    font-size: 0.85em;
+    margin-top: 3px;
+}
+
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
 }
