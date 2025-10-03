@@ -124,9 +124,7 @@ function App() {
                 <Route path="/" element={<AnalyzerWizard />} />
                 <Route path="/report/:reportId" element={<ReportView />} />
             </Routes>
-            <footer style={{textAlign: 'center', marginTop: '20px', fontSize: '0.8em'}}>
-                <p>Built for Assignment PRD — Powered by MREN Stack on MongoDB Atlas.</p>
-            </footer>
+            
         </BrowserRouter>
     );
 }
