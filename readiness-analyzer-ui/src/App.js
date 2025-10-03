@@ -1,4 +1,3 @@
-// src/App.js
 
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom';

@@ -2,12 +2,9 @@
 
 import axios from 'axios';
 
-// Ensure this URL matches your Express server running on port 3000
-const API_BASE_URL = 'http://localhost:3000/api'; 
+const API_BASE_URL = 'http://localhost:3001/api'; 
 
-/**
- * P0: POST /upload (Raw JSON payload)
- */
+
 export const uploadDataRaw = async (text, country, erp) => {
     const response = await axios.post(`${API_BASE_URL}/upload`, { 
         text, 

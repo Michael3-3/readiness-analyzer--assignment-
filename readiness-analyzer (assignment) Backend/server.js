@@ -1,14 +1,21 @@
-// server.js
 
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 const analyzerRoutes = require('./routes/analyzer');
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
+
+app.use(cors({
+    origin: 'http://localhost:3000', // Allow only the React app origin
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 
 // Middleware
 app.use(express.json()); // For parsing application/json
